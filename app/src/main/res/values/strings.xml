@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Movie_Notes</string>
+
+    <string-array name="categories_array">
+        <item> ΔΡΑΣΗΣ </item>
+        <item> ΚΩΜΩΔΙΑ </item>
+        <item> ΦΑΝΤΑΣΙΑΣ </item>
+        <item> ΘΡΙΛΕΡ </item>
+        <item> ΔΡΑΜΑ </item>
+        <item> ΤΡΟΜΟΥ </item>
+    </string-array>
+
+</resources>
