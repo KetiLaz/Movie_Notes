@@ -47,7 +47,7 @@ public class Spinner_CustomAdapter extends BaseAdapter {
 
         Category category_position = categories.get(position);
 
-        txtSpinner_id.setText(category_position.getId());
+        txtSpinner_id.setText(String.valueOf(category_position.getId()));
         txtSpinner_title.setText(category_position.getTitle());
 
         return convertView;

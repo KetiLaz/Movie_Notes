@@ -28,6 +28,8 @@ public class SqlHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CATEGORIES_ID = "id";
     public static final String COLUMN_CATEGORY_TITLE = "title";
 
+    public static final String[] CATEGORIES_COLUMN = {COLUMN_CATEGORIES_ID, COLUMN_CATEGORY_TITLE};
+
     public SqlHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

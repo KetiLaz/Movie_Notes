@@ -35,12 +35,12 @@ public class Edit_Movie_note extends AppCompatActivity {
         txt_edit_title.setText(movie.getMovie_title());
         txt_edit_notes.setText(movie.getNotes());
         txt_edit_date.setText(movie.getDate());
-        edit_spinner.setSelection(movie.getCategory_id() - 1);
+        edit_spinner.setSelection(movie.getCategory_id());
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                movie.update(Edit_Movie_note.this, txt_edit_title.getText().toString(), txt_edit_notes.getText().toString(), txt_edit_date.getText().toString(), edit_spinner.getSelectedItemPosition() - 1);
+                movie.update(Edit_Movie_note.this, txt_edit_title.getText().toString(), txt_edit_notes.getText().toString(), txt_edit_date.getText().toString(), edit_spinner.getSelectedItemPosition());
                 Edit_Movie_note.this.finish();
             }
         });

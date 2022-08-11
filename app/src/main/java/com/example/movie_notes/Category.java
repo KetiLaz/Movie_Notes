@@ -40,14 +40,13 @@ public class Category {
         SqlHelper helper = new SqlHelper(context);
         SQLiteDatabase database = helper.getWritableDatabase();
 
-        Cursor cursor = database.query(SqlHelper.TABLE_CATEGORIES, new String[]{SqlHelper.COLUMN_CATEGORY_TITLE},null, null, null, null, null);
+        Cursor cursor = database.query(SqlHelper.TABLE_CATEGORIES, SqlHelper.CATEGORIES_COLUMN,null, null, null, null, null);
         cursor.moveToFirst();
 
         while(!cursor.isAfterLast()) {
             Category category = new Category();
             category.id = cursor.getInt(1);
-            category.title = cursor.getString(2);
-
+            category.title = cursor.getString(1);
             categories.add(category);
 
             cursor.moveToNext();
