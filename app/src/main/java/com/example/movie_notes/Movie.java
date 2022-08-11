@@ -57,7 +57,6 @@ public class Movie {
         }
         return "";
 
-
     }
 
     public static ArrayList<Movie> getAll(Context context) {
@@ -89,21 +88,6 @@ public class Movie {
 
         return movies;
 
-    }
-
-    public static ArrayList<String> getAllCategories(Context context) {
-        ArrayList<String> categories = new ArrayList<>();
-        SqlHelper helper = new SqlHelper(context);
-        SQLiteDatabase database = helper.getWritableDatabase();
-
-        Cursor cursor = database.query(SqlHelper.TABLE_CATEGORIES, new String[]{SqlHelper.COLUMN_CATEGORY_TITLE},null, null, null, null, null);
-        cursor.moveToFirst();
-
-        while (!cursor.isAfterLast()) {
-           categories.add(cursor.getString(0));
-            cursor.moveToNext();
-        }
-        return categories;
     }
 
     public int getMovie_id() {

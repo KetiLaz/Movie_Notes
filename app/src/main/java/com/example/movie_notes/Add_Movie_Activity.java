@@ -31,9 +31,10 @@ public class Add_Movie_Activity extends AppCompatActivity {
 
         txt_date.setText(DateFormat.getDateInstance().format(new Date()));
 
-        ArrayList<String> categories = Movie.getAllCategories(Add_Movie_Activity.this);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(Add_Movie_Activity.this, R.layout.spinner_item, categories);
-        categories_spinner.setAdapter(spinnerAdapter);
+        ArrayList<Category> categories = Category.getAllCategories(Add_Movie_Activity.this);
+        Spinner_CustomAdapter customAdapter = new Spinner_CustomAdapter(Add_Movie_Activity.this, categories);
+
+        categories_spinner.setAdapter(customAdapter);
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override

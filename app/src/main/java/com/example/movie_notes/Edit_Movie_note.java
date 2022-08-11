@@ -28,8 +28,8 @@ public class Edit_Movie_note extends AppCompatActivity {
 
         Movie movie = new Movie(Edit_Movie_note.this, getIntent().getExtras().getInt("movie_id"));
 
-        ArrayList<String> categories = Movie.getAllCategories(Edit_Movie_note.this);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(Edit_Movie_note.this, R.layout.spinner_item, categories);
+        ArrayList<Category> categories = Category.getAllCategories(Edit_Movie_note.this);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter(Edit_Movie_note.this, R.layout.spinner_item, categories);
         edit_spinner.setAdapter(spinnerAdapter);
 
         txt_edit_title.setText(movie.getMovie_title());
