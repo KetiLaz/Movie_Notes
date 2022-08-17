@@ -27,7 +27,7 @@ public class Show_Movie_note extends AppCompatActivity {
         txt_show_notes.setText(movie.getNotes());
         txt_show_date.setText(movie.getDate());
         txt_show_category.setText(movie.getCategory(Show_Movie_note.this));
-        // show_rating.setRating(movie.getRating());
+        show_rating.setRating((float) movie.getRating());
 
 
     }

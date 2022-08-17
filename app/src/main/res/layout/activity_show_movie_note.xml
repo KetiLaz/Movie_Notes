@@ -43,8 +43,9 @@
 
     <RatingBar
         android:id="@+id/show_rating"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numStars="10"
+        android:layout_gravity="center"
+        android:numStars="5"
         android:stepSize="0.1" />
 </LinearLayout>

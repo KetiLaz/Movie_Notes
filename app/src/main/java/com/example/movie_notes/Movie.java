@@ -55,10 +55,9 @@ public class Movie {
         if(cursor.getCount() > 0){
             return cursor.getString(0);
         }
-        return "";
+        return "ΔΡΑΣΗΣ";
 
     }
-
     public static ArrayList<Movie> getAll(Context context) {
         ArrayList<Movie> movies = new ArrayList<>();
 
@@ -146,7 +145,7 @@ public class Movie {
         values.put(helper.COLUMN_MOVIE_TITLE, this.movie_title);
         values.put(helper.COLUMN_NOTES, this.notes);
         values.put(helper.COLUMN_DATE, this.date);
-        values.put(helper.COLUMN_CATEGORY_ID, this.category_id + 1);
+        values.put(helper.COLUMN_CATEGORY_ID, this.category_id);
         values.put(helper.COLUMN_RATING, this.rating);
 
         database.insert(helper.TABLE_MOVIES, null, values);
@@ -155,7 +154,7 @@ public class Movie {
         helper.close();
     }
 
-    public void update(Context context, String movie_title, String notes, String date, int category_id) {
+    public void update(Context context, String movie_title, String notes, String date, int category_id, double rating) {
         SqlHelper helper = new SqlHelper(context);
         SQLiteDatabase database = helper.getWritableDatabase();
 
@@ -164,6 +163,7 @@ public class Movie {
         values.put(helper.COLUMN_NOTES, notes);
         values.put(helper.COLUMN_DATE, date);
         values.put(helper.COLUMN_CATEGORY_ID, category_id);
+        values.put(helper.COLUMN_RATING, rating);
 
         database.update(SqlHelper.TABLE_MOVIES, values, "id = ?", new String[]{String.valueOf(this.movie_id)});
 

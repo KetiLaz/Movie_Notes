@@ -12,8 +12,10 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class Add_Movie_Activity extends AppCompatActivity {
 
@@ -29,7 +31,8 @@ public class Add_Movie_Activity extends AppCompatActivity {
         RatingBar rating = findViewById(R.id.rating);
         Button btn_save = findViewById(R.id.btn_save);
 
-        txt_date.setText(DateFormat.getDateInstance().format(new Date()));
+        txt_date.setText(DateFormat.getDateInstance(DateFormat.SHORT, Locale.GERMAN).format(new Date()));
+
 
         ArrayList<Category> categories = Category.getAllCategories(Add_Movie_Activity.this);
         Spinner_CustomAdapter customAdapter = new Spinner_CustomAdapter(Add_Movie_Activity.this, categories);

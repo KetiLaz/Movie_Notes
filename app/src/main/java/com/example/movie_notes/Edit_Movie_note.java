@@ -3,6 +3,7 @@ package com.example.movie_notes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,20 +30,25 @@ public class Edit_Movie_note extends AppCompatActivity {
         Movie movie = new Movie(Edit_Movie_note.this, getIntent().getExtras().getInt("movie_id"));
 
         ArrayList<Category> categories = Category.getAllCategories(Edit_Movie_note.this);
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter(Edit_Movie_note.this, R.layout.spinner_item, categories);
+        Spinner_CustomAdapter spinnerAdapter = new Spinner_CustomAdapter(Edit_Movie_note.this, categories);
         edit_spinner.setAdapter(spinnerAdapter);
 
         txt_edit_title.setText(movie.getMovie_title());
         txt_edit_notes.setText(movie.getNotes());
         txt_edit_date.setText(movie.getDate());
+        edit_rating.setRating((float)movie.getRating());
         edit_spinner.setSelection(movie.getCategory_id());
+        Log.d("CATEGORYID", String.valueOf(movie.getCategory_id()));
+
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                movie.update(Edit_Movie_note.this, txt_edit_title.getText().toString(), txt_edit_notes.getText().toString(), txt_edit_date.getText().toString(), edit_spinner.getSelectedItemPosition());
+                movie.update(Edit_Movie_note.this, txt_edit_title.getText().toString(), txt_edit_notes.getText().toString(), txt_edit_date.getText().toString(), edit_spinner.getSelectedItemPosition(), edit_rating.getRating());
                 Edit_Movie_note.this.finish();
             }
         });
+
+
     }
 }

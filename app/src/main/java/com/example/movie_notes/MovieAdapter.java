@@ -1,6 +1,7 @@
 package com.example.movie_notes;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -65,8 +67,24 @@ public class MovieAdapter extends RecyclerView.Adapter {
         ((MyViewHolder)holder).btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                movies.get(item_position).delete(context);
-                ((MainActivity)context).onStart();
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Διαγραφή Σημείωσης;");
+                builder.setCancelable(false);
+                builder.setNegativeButton("ΆΚΥΡΟ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.setPositiveButton("ΔΙΑΓΡΑΦΗ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        movies.get(item_position).delete(context);
+                        ((MainActivity)context).onStart();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
