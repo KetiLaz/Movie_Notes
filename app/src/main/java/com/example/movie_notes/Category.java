@@ -19,22 +19,6 @@ public class Category {
         this.title = title;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public static ArrayList<Category> getAllCategories(Context context) {
         ArrayList<Category> categories = new ArrayList<>();
         SqlHelper helper = new SqlHelper(context);
@@ -57,6 +41,35 @@ public class Category {
 
         return categories;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Category(Context context, int id) {
+        SqlHelper helper = new SqlHelper(context);
+        SQLiteDatabase database = helper.getWritableDatabase();
+
+        Cursor cursor = database.query(helper.TABLE_CATEGORIES, helper.CATEGORIES_COLUMN, "id=?", new String[]{String.valueOf(id)}, null, null, null);
+
+        cursor.moveToFirst();
+
+        this.id = id;
+        this.title = cursor.getString(1);
+    }
+
 }
 
 

@@ -38,8 +38,6 @@ public class Edit_Movie_note extends AppCompatActivity {
         txt_edit_date.setText(movie.getDate());
         edit_rating.setRating((float)movie.getRating());
         edit_spinner.setSelection(movie.getCategory_id());
-        Log.d("CATEGORYID", String.valueOf(movie.getCategory_id()));
-
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override

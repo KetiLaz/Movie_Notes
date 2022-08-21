@@ -47,32 +47,32 @@ public class SqlHelper extends SQLiteOpenHelper {
                 + COLUMN_CATEGORY_TITLE +" TEXT NOT NULL)");
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_CATEGORIES_ID, 1);
+        values.put(COLUMN_CATEGORIES_ID, 0);
         values.put(COLUMN_CATEGORY_TITLE, "ΔΡΑΣΗΣ");
         sqLiteDatabase.insert(TABLE_CATEGORIES, null, values);
 
         values = new ContentValues();
-        values.put(COLUMN_CATEGORIES_ID, 2);
+        values.put(COLUMN_CATEGORIES_ID, 1);
         values.put(COLUMN_CATEGORY_TITLE, "ΚΩΜΩΔΙΑ");
         sqLiteDatabase.insert(TABLE_CATEGORIES, null, values);
 
         values = new ContentValues();
-        values.put(COLUMN_CATEGORIES_ID, 3);
+        values.put(COLUMN_CATEGORIES_ID, 2);
         values.put(COLUMN_CATEGORY_TITLE, "ΦΑΝΤΑΣΙΑΣ");
         sqLiteDatabase.insert(TABLE_CATEGORIES, null, values);
 
         values = new ContentValues();
-        values.put(COLUMN_CATEGORIES_ID, 4);
+        values.put(COLUMN_CATEGORIES_ID, 3);
         values.put(COLUMN_CATEGORY_TITLE, "ΘΡΙΛΕΡ");
         sqLiteDatabase.insert(TABLE_CATEGORIES, null, values);
 
         values = new ContentValues();
-        values.put(COLUMN_CATEGORIES_ID, 5);
+        values.put(COLUMN_CATEGORIES_ID, 4);
         values.put(COLUMN_CATEGORY_TITLE, "ΔΡΑΜΑ");
         sqLiteDatabase.insert(TABLE_CATEGORIES, null, values);
 
         values = new ContentValues();
-        values.put(COLUMN_CATEGORIES_ID, 6);
+        values.put(COLUMN_CATEGORIES_ID, 5);
         values.put(COLUMN_CATEGORY_TITLE, "ΤΡΟΜΟΥ");
         sqLiteDatabase.insert(TABLE_CATEGORIES, null, values);
 
