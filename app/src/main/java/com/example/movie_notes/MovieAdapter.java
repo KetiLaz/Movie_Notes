@@ -39,9 +39,7 @@ public class MovieAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((MyViewHolder)holder).txtVw_title.setText(movies.get(position).getMovie_title());
-        ((MyViewHolder)holder).txtVw_category.setText(movies.get(position).getCategory(context));
-        ((MyViewHolder)holder).txtVw_date.setText(movies.get(position).getDate());
-        ((MyViewHolder)holder).txtVw_notes.setText(movies.get(position).getNotes());
+        ((MyViewHolder)holder).txtVw_date.setText("Δημιουργήθηκε: " + movies.get(position).getDate());
 
         int item_position = position;
 
@@ -99,18 +97,14 @@ public class MovieAdapter extends RecyclerView.Adapter {
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtVw_title;
-        TextView txtVw_category;
         TextView txtVw_date;
-        TextView txtVw_notes;
         Button btn_edit;
         Button btn_delete;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             txtVw_title = itemView.findViewById(R.id.txtVw_title);
-            txtVw_category = itemView.findViewById(R.id.txtVw_category);
             txtVw_date = itemView.findViewById(R.id.txtVw_date);
-            txtVw_notes = itemView.findViewById(R.id.txtVw_notes);
             btn_edit = itemView.findViewById(R.id.btn_edit);
             btn_delete = itemView.findViewById(R.id.btn_delete);
         }

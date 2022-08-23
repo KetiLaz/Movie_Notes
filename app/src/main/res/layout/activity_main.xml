@@ -2,21 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="B"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FF5722"
+    android:backgroundTintMode="add"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btn_add_movie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add new movie" />
+        android:text="ΠΡΟΣΘΗΚΗ ΝΕΑΣ ΤΑΙΝΙΑΣ"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:layout_margin="12dp"
+        android:padding="12dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:padding="6dp"/>
 
 </LinearLayout>
 

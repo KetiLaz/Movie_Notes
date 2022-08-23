@@ -3,6 +3,7 @@ package com.example.movie_notes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -23,6 +24,10 @@ public class Show_Movie_note extends AppCompatActivity {
 
         Movie movie = new Movie(Show_Movie_note.this, getIntent().getExtras().getInt("movie_id"));
 
+        if (txt_show_title.getText().toString().isEmpty()) {
+           txt_show_title.setText("Χωρίς τίτλο");
+           return;
+        }
         txt_show_title.setText(movie.getMovie_title());
         txt_show_notes.setText(movie.getNotes());
         txt_show_date.setText(movie.getDate());
