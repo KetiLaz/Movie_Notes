@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,9 @@ public class MovieAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((MyViewHolder)holder).txtVw_title.setText(movies.get(position).getMovie_title());
         ((MyViewHolder)holder).txtVw_date.setText("Δημιουργήθηκε: " + movies.get(position).getDate());
+        if (((MyViewHolder)holder).txtVw_title.getText().toString().isEmpty()) {
+            ((MyViewHolder)holder).txtVw_title.setText("Χωρίς Τίτλο");
+        }
 
         int item_position = position;
 

@@ -34,7 +34,14 @@ public class Edit_Movie_note extends AppCompatActivity {
         edit_spinner.setAdapter(spinnerAdapter);
 
         txt_edit_title.setText(movie.getMovie_title());
+        if (txt_edit_title.getText().toString().isEmpty()) {
+            txt_edit_title.setText("Χωρίς Τίτλο");
+        }
+
         txt_edit_notes.setText(movie.getNotes());
+        if (txt_edit_notes.getText().toString().isEmpty()) {
+            txt_edit_notes.setText("Χωρίς Σημειώσεις");
+        }
         txt_edit_date.setText(movie.getDate());
         edit_rating.setRating((float)movie.getRating());
         edit_spinner.setSelection(movie.getCategory_id());

@@ -24,12 +24,16 @@ public class Show_Movie_note extends AppCompatActivity {
 
         Movie movie = new Movie(Show_Movie_note.this, getIntent().getExtras().getInt("movie_id"));
 
-        if (txt_show_title.getText().toString().isEmpty()) {
-           txt_show_title.setText("Χωρίς τίτλο");
-           return;
-        }
         txt_show_title.setText(movie.getMovie_title());
+        if (txt_show_title.getText().toString().isEmpty()) {
+            txt_show_title.setText("Χωρίς Τίτλο");
+        }
+
         txt_show_notes.setText(movie.getNotes());
+        if (txt_show_notes.getText().toString().isEmpty()) {
+            txt_show_notes.setText("Χωρίς Σημειώσεις");
+        }
+
         txt_show_date.setText(movie.getDate());
         txt_show_category.setText(movie.getCategory(Show_Movie_note.this));
         show_rating.setRating((float) movie.getRating());
