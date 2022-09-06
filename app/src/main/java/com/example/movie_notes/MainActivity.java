@@ -18,32 +18,33 @@ import android.widget.EditText;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Movie> movies = new ArrayList<>();
 
-    private void getMovies(String searchTerm) {
-        movies.clear();
-        SqlHelper helper = new SqlHelper(this);
-        SQLiteDatabase database = helper.getWritableDatabase();
-        SqlSearch search = new SqlSearch(this);
-        Movie movie = null;
-        Cursor cursor = search.retrieve(searchTerm);
-
-         while (cursor.moveToNext()) {
-             int movie_id = cursor.getInt(0);
-             String movie_title = cursor.getString(1);
-
-             movie = new Movie();
-             movie.setMovie_id(movie_id);
-             movie.setMovie_title(movie_title);
-
-             movies.add(movie);
-         }
-         database.close();
-         helper.close();
-    }
+//    private void getMovies(String searchTerm) {
+//        movies.clear();
+//        SqlHelper helper = new SqlHelper(this);
+//        SQLiteDatabase database = helper.getWritableDatabase();
+//        SqlSearch search = new SqlSearch(this);
+//        Movie movie = null;
+//        Cursor cursor = search.retrieve(searchTerm);
+//
+//         while (cursor.moveToNext()) {
+//             int movie_id = cursor.getInt(0);
+//             String movie_title = cursor.getString(1);
+//
+//             movie = new Movie();
+//             movie.setMovie_id(movie_id);
+//             movie.setMovie_title(movie_title);
+//
+//             movies.add(movie);
+//         }
+//         database.close();
+//         helper.close();
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,12 +94,21 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String query) {
-                getMovies(query);
+                searchMovies(query);
                 return false;
             }
         });
 
         return super.onCreateOptionsMenu(menu);
     }
+
+    private void searchMovies (String searchTerm) {
+        SqlHelper helper = new SqlHelper(getApplicationContext());
+        ArrayList<Movie> movies = helper.retrieve(searchTerm);
+        if (movies != null) {
+            recyclerView.setAdapter(new MovieAdapter(getApplicationContext(), movies));
+        }
+    }
 }
+
 

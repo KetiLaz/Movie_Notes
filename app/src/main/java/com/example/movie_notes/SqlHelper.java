@@ -2,6 +2,7 @@ package com.example.movie_notes;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -9,6 +10,8 @@ import androidx.annotation.Nullable;
 
 import java.security.PublicKey;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SqlHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "movie_notes";
@@ -82,5 +85,30 @@ public class SqlHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+    }
+
+    public ArrayList<Movie> retrieve (String searchTerm) {
+        ArrayList<Movie> movies = null;
+        try{
+            SQLiteDatabase database = getReadableDatabase();
+            Cursor cursor = database.rawQuery("SELECT * FROM " + SqlHelper.TABLE_MOVIES+" WHERE " + SqlHelper.COLUMN_MOVIE_TITLE+ " LIKE '%" +searchTerm+ "%'", null);
+            if (cursor.moveToFirst()) {
+                movies = new ArrayList<Movie>();
+                do {
+                    Movie movie = new Movie();
+                    movie.setMovie_id(cursor.getInt(0));
+                    movie.setMovie_title(cursor.getString(1));
+                    movie.setRating(cursor.getDouble(5));
+                    movie.setCategory_id(cursor.getInt(4));
+                    movie.setDate(cursor.getString(3));
+                    movie.setNotes(cursor.getString(2));
+                    movies.add(movie);
+                } while (cursor.moveToNext());
+            }
+
+        } catch (Exception e) {
+            movies = null;
+        }
+        return movies;
     }
 }
