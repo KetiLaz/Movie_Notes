@@ -91,7 +91,7 @@ public class SqlHelper extends SQLiteOpenHelper {
         ArrayList<Movie> movies = null;
         try{
             SQLiteDatabase database = getReadableDatabase();
-            Cursor cursor = database.rawQuery("SELECT * FROM " + SqlHelper.TABLE_MOVIES+" WHERE " + SqlHelper.COLUMN_MOVIE_TITLE+ " LIKE '%" +searchTerm+ "%'", null);
+            Cursor cursor = database.rawQuery("SELECT * FROM " + SqlHelper.TABLE_MOVIES+" WHERE " + SqlHelper.COLUMN_MOVIE_TITLE+ " LIKE '" +searchTerm+ "%'", null);
             if (cursor.moveToFirst()) {
                 movies = new ArrayList<Movie>();
                 do {

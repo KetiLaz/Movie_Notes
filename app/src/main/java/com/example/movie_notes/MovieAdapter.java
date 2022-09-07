@@ -52,6 +52,7 @@ public class MovieAdapter extends RecyclerView.Adapter {
             public void onClick(View view) {
                 Intent intent = new Intent(context, Show_Movie_note.class);
                 intent.putExtra("movie_id", movies.get(item_position).getMovie_id());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
 
             }
